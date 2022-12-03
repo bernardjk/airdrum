@@ -1,3 +1,14 @@
 <app-handtracker (onPrediction)="prediction($event)"></app-handtracker>
 
 <div [innerHTML]="gesture"></div>
+
+<button (click)="playBass()">Drum Kick</button>
+<button (click)="playHi()">Hi-Tom</button>
+<button (click)="playMid()">Mid-Tom</button>
+<button (click)="playLow()">Low-Tom</button>
+<button (click)="playFloor()">Floor-Tom</button>
+<button (click)="playCrash()">Crash Cymbal</button>
+<button (click)="playHat()">Hi-Hat</button>
+<button (click)="playRide()">Ride Cymbal</button>
+<button (click)="playClap()">Clap</button>
+<button (click)="playStick()">sticks</button>
