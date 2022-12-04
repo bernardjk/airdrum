@@ -24,14 +24,18 @@ export class HomePageComponent implements OnInit {
     this.gesture = event.getPrediction();
   }
   
+  returnPrediction(event: PredictionEvent){
+    return event.getPrediction();
+  }
+
   addSound(){
-    let predict; 
+    let predict: string; 
 
     for(let i = 0; i < 10;i++){
       if(this.stopSound){
         break;
       }
-      predict = this.getPrediction();
+      predict = this.avgPrediction();
     
       this.soundImgArray[i] = this.predictImg(predict);
       this.soundArray[i] = this.predictSound(predict);
@@ -101,24 +105,54 @@ export class HomePageComponent implements OnInit {
     audio.play();
   }
 
-  playSounds(){
-    let currentSound;
+  async playSounds(){
     let audio = new Audio();
-    for(let i = 0; i < this.soundImgArray.length;i++){
-      setTimeout(audio.src = this.soundImgArray[i], 5);
-      audio.load();
-      audio.play();
+    console.log(this.soundArray);
+    for(let i = 0; i < this.soundArray.length;i++){
+      audio.src = this.soundArray[i];
+      await this.playAudio(audio);
     }
   }
+
+  playAudio(audio: HTMLAudioElement){
+    return new Promise(res=>{
+      audio.play()
+      audio.onended = res
+    })
+  }
+
   updatesoundImgArray() {
     for(let i =0; i < this.soundImgArray.length; i++){
       document.getElementById("square"+[i])?.setAttribute('src',this.soundImgArray[i]);
     }
   }
     
-  getPrediction() {
-    
-    return "../assets/drum_imgs/Clap.jpg";
+  avgPrediction() {
+    let array:string[] = [];
+    let it = 0;
+    //fill the array until it has 50 elements 
+    while (array.length < 50){
+      array[it] = this.returnPrediction(); //****************************this is the problem****************************************** */
+      it++;
+    }
+    let x = 0;
+    let y = 1;
+    let z: string = "";
+    for (var i=0; i<array.length; i++)
+    {
+            for (var j=i; j<array.length; j++)
+            {
+                    if (array[i] == array[j]){
+                      x++;
+                    }
+                    if (y<x){
+                      y=x; 
+                      z = array[i];
+                    }
+            }
+            x=0;
+    }
+    return z;
   }
 
   predictImg(predict: string){
@@ -154,7 +188,7 @@ export class HomePageComponent implements OnInit {
       case "Two Open Hands":
          return "../assets/Bass-Drum.wav";
       case "Closed Hand":
-          return "../assets/drum_imgs/High-Hat.jpg";
+          return "../assets/Hi-Hat.wav";
       case "Two Closed Hands":
          return "../assets/Hi-Tom.wav";
       case "Hand Pointing":
@@ -164,15 +198,17 @@ export class HomePageComponent implements OnInit {
       case "Hand Pinching":
           return "../assets/Crash-Cymbal.wav";
       case "Two Hands Pinching":
-          return "../assets/drum_imgs/Ride_Cymbal.jpg";
+          return "../assets/Ride-Cymbal.wav";
       case "Hands Together":
-          return "../assets/drum_imgs/Clap.jpg";
+          return "../assets/Clap.wav";
       case "Peace Sign":
-          return "../assets/drum_imgs/Sticks.jpg";
+          return "../assets/Cross-Sticks.wav";
       default:
-          return "../assets/drum_imgs/blank.jpg";
+          return "null";
     }
   }
+
+  
 
 }
 
