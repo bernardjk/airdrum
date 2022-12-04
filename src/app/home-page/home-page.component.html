@@ -10,59 +10,75 @@
     </div>
 
     <div class="right-container">
-        <div class="grid-item"><img id="drum_img" src="..\assets\drum_imgs\Clap.jpg" alt="Picture of hands clapping">
+        <div class="grid-item"><img class="drum_img" src="..\assets\drum_imgs\Clap.jpg" alt="Picture of hands clapping">
         </div>
-        <div class="grid-item"><img id="drum_img" src="..\assets\drum_imgs\Crash_Cymbal.jpg"
+        <div class="grid-item"><img class="drum_img" src="..\assets\drum_imgs\Crash_Cymbal.jpg"
                 alt="Picture of hands crash cymbal"></div>
-        <div class="grid-item"><img id="drum_img" src="..\assets\drum_imgs\Drum_Kick.jpg" alt="Picture of Bass Drum">
+        <div class="grid-item"><img class="drum_img" src="..\assets\drum_imgs\Drum_Kick.jpg" alt="Picture of Bass Drum">
         </div>
-        <div class="grid-item"><img id="drum_img" src="..\assets\drum_imgs\Floor-Tom.jpg" alt="Picture of Floor-Tom">
+        <div class="grid-item"><img class="drum_img" src="..\assets\drum_imgs\Floor-Tom.jpg" alt="Picture of Floor-Tom">
         </div>
-        <div class="grid-item"><img id="drum_img" src="..\assets\drum_imgs\High-Hat.jpg" alt="Picture of high-hat">
+        <div class="grid-item"><img class="drum_img" src="..\assets\drum_imgs\High-Hat.jpg" alt="Picture of high-hat">
         </div>
-        <div class="grid-item"><img id="drum_img" src="..\assets\drum_imgs\High-Tom.jpg" alt="Picture of high-tom">
+        <div class="grid-item"><img class="drum_img" src="..\assets\drum_imgs\High-Tom.jpg" alt="Picture of high-tom">
         </div>
-        <div class="grid-item"><img id="drum_img" src="..\assets\drum_imgs\Low-Tom.jpg" alt="Picture of low-tom"></div>
-        <div class="grid-item"><img id="drum_img" src="..\assets\drum_imgs\Mid-Tom.jpg" alt="Picture of mid-tom"></div>
-        <div class="grid-item"><img id="drum_img" src="..\assets\drum_imgs\Ride_Cymbal.jpg"
+        <div class="grid-item"><img class="drum_img" src="..\assets\drum_imgs\Low-Tom.jpg" alt="Picture of low-tom">
+        </div>
+        <div class="grid-item"><img class="drum_img" src="..\assets\drum_imgs\Mid-Tom.jpg" alt="Picture of mid-tom">
+        </div>
+        <div class="grid-item"><img class="drum_img" src="..\assets\drum_imgs\Ride_Cymbal.jpg"
                 alt="Picture of ride cymbal">
         </div>
-        <div class="grid-item"><img id="drum_img" src="..\assets\drum_imgs\Sticks.jpg" alt="Picture of sticks"></div>
+        <div class="grid-item"><img class="drum_img" src="..\assets\drum_imgs\Sticks.jpg" alt="Picture of sticks"></div>
     </div>
 </div>
+
+<div class="recording_tools">
+    <div class="record_button">
+        <button id="record_button" (click)="addSound()">Record</button>
+    </div>
+</div>
+
 
 <div class="bottom_grid">
     <div class="sound_list">
         <!-- for now i will just assume that 10 is the max for the number of sounds you can put toegther.
         I am doing this because I am setting up a 10 element grid to contain the sounds -->
         <div class="sounds-container">
-            <div class="sound-item"><img id="drum_img" src="..\assets\drum_imgs\Clap.jpg"
-                    alt="Picture of hands clapping">
+            <div class="sound-item"><img class="drum_img" id="square0" src="..\assets\drum_imgs\blank.jpg"
+                    alt="empty square">
             </div>
-            <div class="sound-item"><img id="drum_img" src="..\assets\drum_imgs\Crash_Cymbal.jpg"
-                    alt="Picture of hands crash cymbal"></div>
-            <div class="sound-item"><img id="drum_img" src="..\assets\drum_imgs\Drum_Kick.jpg"
-                    alt="Picture of Bass Drum">
+            <div class="sound-item"><img class="drum_img" id="square1" src="..\assets\drum_imgs\blank.jpg"
+                    alt="empty square">
             </div>
-            <div class="sound-item"><img id="drum_img" src="..\assets\drum_imgs\Floor-Tom.jpg"
-                    alt="Picture of Floor-Tom">
+            <div class="sound-item"><img class="drum_img" id="square2" src="..\assets\drum_imgs\blank.jpg"
+                    alt="empty square"></div>
+            <div class="sound-item"><img class="drum_img" id="square3" src="..\assets\drum_imgs\blank.jpg"
+                    alt="empty square">
             </div>
-            <div class="sound-item"><img id="drum_img" src="..\assets\drum_imgs\High-Hat.jpg" alt="Picture of high-hat">
+            <div class="sound-item"><img class="drum_img" id="square4" src="..\assets\drum_imgs\blank.jpg"
+                    alt="empty square">
             </div>
-            <div class="sound-item"><img id="drum_img" src="..\assets\drum_imgs\High-Tom.jpg" alt="Picture of high-tom">
+            <div class="sound-item"><img class="drum_img" id="square5" src="..\assets\drum_imgs\blank.jpg"
+                    alt="empty square">
             </div>
-            <div class="sound-item"><img id="drum_img" src="..\assets\drum_imgs\Low-Tom.jpg" alt="Picture of low-tom">
+            <div class="sound-item"><img class="drum_img" id="square6" src="..\assets\drum_imgs\blank.jpg"
+                    alt="empty square">
             </div>
-            <div class="sound-item"><img id="drum_img" src="..\assets\drum_imgs\Mid-Tom.jpg" alt="Picture of mid-tom">
+            <div class="sound-item"><img class="drum_img" id="square7" src="..\assets\drum_imgs\blank.jpg"
+                    alt="empty square">
             </div>
-            <div class="sound-item"><img id="drum_img" src="..\assets\drum_imgs\Ride_Cymbal.jpg"
-                    alt="Picture of ride cymbal">
+            <div class="sound-item"><img class="drum_img" id="square8" src="..\assets\drum_imgs\blank.jpg"
+                    alt="empty square">
             </div>
-            <div class="sound-item"><img id="drum_img" src="..\assets\drum_imgs\Sticks.jpg" alt="Picture of sticks">
+            <div class="sound-item"><img class="drum_img" id="square9" src="..\assets\drum_imgs\blank.jpg"
+                    alt="empty square">
             </div>
         </div>
     </div>
-    <div class="play_button"></div>
+    <div class="play_button">
+        <button id="play_button" (click)="playSounds()">Play All Sounds</button>
+    </div>
 </div>
 
 
