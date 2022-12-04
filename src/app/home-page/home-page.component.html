@@ -1,6 +1,71 @@
-<app-handtracker (onPrediction)="prediction($event)"></app-handtracker>
+<div class="middle_grid">
 
-<div [innerHTML]="gesture"></div>
+    <div class="left-container">
+        <p>Hello! Welcome to AirDrummer!</p>
+    </div>
+    <div class="middle-container">
+        <app-handtracker (onPrediction)="prediction($event)"></app-handtracker>
+
+        <div id="gesture" [innerHTML]="gesture"></div>
+    </div>
+
+    <div class="right-container">
+        <div class="grid-item"><img id="drum_img" src="..\assets\drum_imgs\Clap.jpg" alt="Picture of hands clapping">
+        </div>
+        <div class="grid-item"><img id="drum_img" src="..\assets\drum_imgs\Crash_Cymbal.jpg"
+                alt="Picture of hands crash cymbal"></div>
+        <div class="grid-item"><img id="drum_img" src="..\assets\drum_imgs\Drum_Kick.jpg" alt="Picture of Bass Drum">
+        </div>
+        <div class="grid-item"><img id="drum_img" src="..\assets\drum_imgs\Floor-Tom.jpg" alt="Picture of Floor-Tom">
+        </div>
+        <div class="grid-item"><img id="drum_img" src="..\assets\drum_imgs\High-Hat.jpg" alt="Picture of high-hat">
+        </div>
+        <div class="grid-item"><img id="drum_img" src="..\assets\drum_imgs\High-Tom.jpg" alt="Picture of high-tom">
+        </div>
+        <div class="grid-item"><img id="drum_img" src="..\assets\drum_imgs\Low-Tom.jpg" alt="Picture of low-tom"></div>
+        <div class="grid-item"><img id="drum_img" src="..\assets\drum_imgs\Mid-Tom.jpg" alt="Picture of mid-tom"></div>
+        <div class="grid-item"><img id="drum_img" src="..\assets\drum_imgs\Ride_Cymbal.jpg"
+                alt="Picture of ride cymbal">
+        </div>
+        <div class="grid-item"><img id="drum_img" src="..\assets\drum_imgs\Sticks.jpg" alt="Picture of sticks"></div>
+    </div>
+</div>
+
+<div class="bottom_grid">
+    <div class="sound_list">
+        <!-- for now i will just assume that 10 is the max for the number of sounds you can put toegther.
+        I am doing this because I am setting up a 10 element grid to contain the sounds -->
+        <div class="sounds-container">
+            <div class="sound-item"><img id="drum_img" src="..\assets\drum_imgs\Clap.jpg"
+                    alt="Picture of hands clapping">
+            </div>
+            <div class="sound-item"><img id="drum_img" src="..\assets\drum_imgs\Crash_Cymbal.jpg"
+                    alt="Picture of hands crash cymbal"></div>
+            <div class="sound-item"><img id="drum_img" src="..\assets\drum_imgs\Drum_Kick.jpg"
+                    alt="Picture of Bass Drum">
+            </div>
+            <div class="sound-item"><img id="drum_img" src="..\assets\drum_imgs\Floor-Tom.jpg"
+                    alt="Picture of Floor-Tom">
+            </div>
+            <div class="sound-item"><img id="drum_img" src="..\assets\drum_imgs\High-Hat.jpg" alt="Picture of high-hat">
+            </div>
+            <div class="sound-item"><img id="drum_img" src="..\assets\drum_imgs\High-Tom.jpg" alt="Picture of high-tom">
+            </div>
+            <div class="sound-item"><img id="drum_img" src="..\assets\drum_imgs\Low-Tom.jpg" alt="Picture of low-tom">
+            </div>
+            <div class="sound-item"><img id="drum_img" src="..\assets\drum_imgs\Mid-Tom.jpg" alt="Picture of mid-tom">
+            </div>
+            <div class="sound-item"><img id="drum_img" src="..\assets\drum_imgs\Ride_Cymbal.jpg"
+                    alt="Picture of ride cymbal">
+            </div>
+            <div class="sound-item"><img id="drum_img" src="..\assets\drum_imgs\Sticks.jpg" alt="Picture of sticks">
+            </div>
+        </div>
+    </div>
+    <div class="play_button"></div>
+</div>
+
+
 
 <button (click)="playBass()">Drum Kick</button>
 <button (click)="playHi()">Hi-Tom</button>
@@ -12,5 +77,3 @@
 <button (click)="playRide()">Ride Cymbal</button>
 <button (click)="playClap()">Clap</button>
 <button (click)="playStick()">sticks</button>
-
-<img src="src\assets\drum_imgs\Clap.jpg" alt="Picture of hands clapping">
