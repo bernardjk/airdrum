@@ -23,19 +23,25 @@ export class HomePageComponent implements OnInit {
   prediction(event: PredictionEvent){
     this.gesture = event.getPrediction();
   }
-  
-  returnPrediction(event: PredictionEvent){
-    return event.getPrediction();
-  }
 
-  addSound(){
-    let predict: string; 
+  async addSound(){
+    let predict: String; 
+
+    //reset sound image array and soundArray
+    for(let i = 0; i < 10;i++){
+      this.soundImgArray[i] = "null";
+    }
+    for(let i = 0; i < 10;i++){
+      this.soundImgArray[i] = "../assets/drum_imgs/blank.jpg";
+    }
+    this.updatesoundImgArray();
+
 
     for(let i = 0; i < 10;i++){
       if(this.stopSound){
         break;
       }
-      predict = this.avgPrediction();
+      predict = await this.avgPrediction();
     
       this.soundImgArray[i] = this.predictImg(predict);
       this.soundArray[i] = this.predictSound(predict);
@@ -127,17 +133,22 @@ export class HomePageComponent implements OnInit {
     }
   }
     
-  avgPrediction() {
-    let array:string[] = [];
+  async avgPrediction() {
+    let array:String[] = [];
     let it = 0;
     //fill the array until it has 50 elements 
     while (array.length < 50){
-      array[it] = this.returnPrediction(); //****************************this is the problem****************************************** */
+      array[it] = this.gesture; //****************************this is the problem****************************************** */
       it++;
+      console.log(this.gesture);
+
+      //wait 1 second to get next element
+      await new Promise(f => setTimeout(f, 100));
     }
     let x = 0;
     let y = 1;
-    let z: string = "";
+    let z: String = "";
+    console.log(array);
     for (var i=0; i<array.length; i++)
     {
             for (var j=i; j<array.length; j++)
@@ -155,7 +166,7 @@ export class HomePageComponent implements OnInit {
     return z;
   }
 
-  predictImg(predict: string){
+  predictImg(predict: String){
     switch (predict) {
       case "Open Hand":
           return "../assets/drum_imgs/Floor-Tom.jpg";
@@ -181,7 +192,7 @@ export class HomePageComponent implements OnInit {
           return "../assets/drum_imgs/blank.jpg";
     }
   }
-  predictSound(predict: string){
+  predictSound(predict: String){
     switch (predict) {
       case "Open Hand":
           return "../assets/Floor-Tom.wav";
@@ -204,7 +215,8 @@ export class HomePageComponent implements OnInit {
       case "Peace Sign":
           return "../assets/Cross-Sticks.wav";
       default:
-          return "null";
+          //for now the default case will be high-hat
+          return "../assets/Hi-Hat.wav";
     }
   }
 
