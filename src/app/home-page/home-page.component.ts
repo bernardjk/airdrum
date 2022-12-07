@@ -189,7 +189,7 @@ export class HomePageComponent implements OnInit {
       case "Peace Sign":
           return "../assets/drum_imgs/Sticks.jpg";
       default:
-          return "../assets/drum_imgs/blank.jpg";
+          return "../assets/drum_imgs/Hi-Hat.jpg";
     }
   }
   predictSound(predict: String){
