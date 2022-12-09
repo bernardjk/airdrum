@@ -54,7 +54,8 @@ export class Sounds {
             this.soundsrc = "../assets/Cross-Sticks.wav";
         }
         else{
-
+            this.imagesrc = "../assets/drum_imgs/blank.jpg"
+            this.soundsrc = "";
         }
 	}
 

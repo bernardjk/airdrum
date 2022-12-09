@@ -14,6 +14,7 @@ export class HomePageComponent implements OnInit {
   // soundArray: string[] = [];
   soundsArray: Sounds[] = [];
   stopSound: boolean = false;
+  hasstarted: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -30,7 +31,7 @@ export class HomePageComponent implements OnInit {
     let predict: String; 
     this.stopSound = false;
     //reset sound image array and soundArray
-    this.soundsArray = [];
+    this.hasstarted = true;
     
     // for(let i = 0; i < 10;i++){
     //   this.soundImgArray[i] = "../assets/drum_imgs/blank.jpg";
@@ -38,7 +39,7 @@ export class HomePageComponent implements OnInit {
     // this.updatesoundImgArray();
 
 
-    for(let i = 0; i < 10;i++){
+    while(true){
       if(this.stopSound){
         break;
       }
@@ -46,17 +47,21 @@ export class HomePageComponent implements OnInit {
     
       // this.soundImgArray[i] = this.predictImg(predict);
       // this.soundArray[i] = this.predictSound(predict);
-      console.log(predict);
-      console.log(this.Handtosound(predict));
+      if(this.hasstarted == true)
+      {
+        console.log(predict);
+      console.log(this.Handtosound(predict))
       let sound = new Sounds(this.Handtosound(predict));
       console.log(sound);
       this.soundsArray.push(sound);
       this.updatesoundImgArray();
+      }
     }
   }
 
   stop(){
     this.stopSound = true;
+    this.hasstarted = false;
   }
 
 
@@ -129,6 +134,13 @@ export class HomePageComponent implements OnInit {
       audio.src = sound.soundsrc;
       await this.playAudio(audio);
     }
+  }
+  clear(){
+    for(let i = 0; i < 10;i++){
+      this.soundsArray[i] = new Sounds("");
+    }
+    this.updatesoundImgArray();
+    this.soundsArray = [];
   }
 
   playAudio(audio: HTMLAudioElement){
