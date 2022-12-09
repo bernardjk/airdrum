@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { waitForDebugger } from 'inspector';
 import { PredictionEvent } from '../prediction-event';
+import { Sounds } from '../sounds';
 
 @Component({
   selector: 'app-home-page',
@@ -9,15 +10,16 @@ import { PredictionEvent } from '../prediction-event';
 })
 export class HomePageComponent implements OnInit {
   gesture: String = "";
-  soundImgArray: string[] = [];//this will be an array of the audio locations and we will play from here
-  soundArray: string[] = [];
+  // soundImgArray: string[] = [];//this will be an array of the audio locations and we will play from here
+  // soundArray: string[] = [];
+  soundsArray: Sounds[] = [];
   stopSound: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
-    for(let i = 0; i < 10;i++){
-      this.soundImgArray[i] = "null";
-    }
+    // for(let i = 0; i < 10;i++){
+    //   this.soundImgArray[i] = "null";
+    // }
   }
 
   prediction(event: PredictionEvent){
@@ -26,15 +28,14 @@ export class HomePageComponent implements OnInit {
 
   async addSound(){
     let predict: String; 
-
+    this.stopSound = false;
     //reset sound image array and soundArray
-    for(let i = 0; i < 10;i++){
-      this.soundImgArray[i] = "null";
-    }
-    for(let i = 0; i < 10;i++){
-      this.soundImgArray[i] = "../assets/drum_imgs/blank.jpg";
-    }
-    this.updatesoundImgArray();
+    this.soundsArray = [];
+    
+    // for(let i = 0; i < 10;i++){
+    //   this.soundImgArray[i] = "../assets/drum_imgs/blank.jpg";
+    // }
+    // this.updatesoundImgArray();
 
 
     for(let i = 0; i < 10;i++){
@@ -43,10 +44,19 @@ export class HomePageComponent implements OnInit {
       }
       predict = await this.avgPrediction();
     
-      this.soundImgArray[i] = this.predictImg(predict);
-      this.soundArray[i] = this.predictSound(predict);
+      // this.soundImgArray[i] = this.predictImg(predict);
+      // this.soundArray[i] = this.predictSound(predict);
+      console.log(predict);
+      console.log(this.Handtosound(predict));
+      let sound = new Sounds(this.Handtosound(predict));
+      console.log(sound);
+      this.soundsArray.push(sound);
       this.updatesoundImgArray();
     }
+  }
+
+  stop(){
+    this.stopSound = true;
   }
 
 
@@ -112,10 +122,11 @@ export class HomePageComponent implements OnInit {
   }
 
   async playSounds(){
-    let audio = new Audio();
-    console.log(this.soundArray);
-    for(let i = 0; i < this.soundArray.length;i++){
-      audio.src = this.soundArray[i];
+    console.log(this.soundsArray);
+    for(let i = 0; i < this.soundsArray.length;i++){
+      let sound = this.soundsArray[i];
+      let audio = new Audio();
+      audio.src = sound.soundsrc;
       await this.playAudio(audio);
     }
   }
@@ -128,8 +139,8 @@ export class HomePageComponent implements OnInit {
   }
 
   updatesoundImgArray() {
-    for(let i =0; i < this.soundImgArray.length; i++){
-      document.getElementById("square"+[i])?.setAttribute('src',this.soundImgArray[i]);
+    for(let i =0; i < this.soundsArray.length; i++){
+      document.getElementById("square"+[i])?.setAttribute('src',this.soundsArray[i].imagesrc);
     }
   }
     
@@ -140,7 +151,7 @@ export class HomePageComponent implements OnInit {
     while (array.length < 50){
       array[it] = this.gesture; //****************************this is the problem****************************************** */
       it++;
-      console.log(this.gesture);
+      //console.log(this.gesture);
 
       //wait 1 second to get next element
       await new Promise(f => setTimeout(f, 100));
@@ -148,7 +159,7 @@ export class HomePageComponent implements OnInit {
     let x = 0;
     let y = 1;
     let z: String = "";
-    console.log(array);
+    // console.log(array);
     for (var i=0; i<array.length; i++)
     {
             for (var j=i; j<array.length; j++)
@@ -166,62 +177,89 @@ export class HomePageComponent implements OnInit {
     return z;
   }
 
-  predictImg(predict: String){
+
+    Handtosound(predict: String){
     switch (predict) {
       case "Open Hand":
-          return "../assets/drum_imgs/Floor-Tom.jpg";
+          return "Floor-Tom";
       case "Two Open Hands":
-         return "../assets/drum_imgs/Drum_Kick.jpg";
+         return "Bass-Drum";
       case "Closed Hand":
-          return "../assets/drum_imgs/High-Hat.jpg";
+          return "Hat";
       case "Two Closed Hands":
-         return "../assets/drum_imgs/High-Tom.jpg";
+         return "Hi-Tom";
       case "Hand Pointing":
-         return "../assets/drum_imgs/Mid-Tom.jpg";
+         return "Mid-Tom";
       case "Two Hands Pointing":
-          return "../assets/drum_imgs/Low-Tom.jpg";
+          return "Low-Tom";
       case "Hand Pinching":
-          return "../assets/drum_imgs/Crash_Cymbal.jpg";
+          return "Crash-Cymbal";
       case "Two Hands Pinching":
-          return "../assets/drum_imgs/Ride_Cymbal.jpg";
-      case "Hands Together":
-          return "../assets/drum_imgs/Clap.jpg";
-      case "Peace Sign":
-          return "../assets/drum_imgs/Sticks.jpg";
-      default:
-          return "../assets/drum_imgs/Hi-Hat.jpg";
-    }
-  }
-  predictSound(predict: String){
-    switch (predict) {
-      case "Open Hand":
-          return "../assets/Floor-Tom.wav";
-      case "Two Open Hands":
-         return "../assets/Bass-Drum.wav";
-      case "Closed Hand":
-          return "../assets/Hi-Hat.wav";
-      case "Two Closed Hands":
-         return "../assets/Hi-Tom.wav";
-      case "Hand Pointing":
-         return "../assets/Mid-Tom.wav";
-      case "Two Hands Pointing":
-          return "../assets/Low-Tom.wav";
-      case "Hand Pinching":
-          return "../assets/Crash-Cymbal.wav";
-      case "Two Hands Pinching":
-          return "../assets/Ride-Cymbal.wav";
-      case "Hands Together":
-          return "../assets/Clap.wav";
-      case "Peace Sign":
-          return "../assets/Cross-Sticks.wav";
+          return "Ride";
+      case "Closed Hand & Open Hand":
+          return "Clap";
+      case "Closed Hand & Hand Pointing":
+          return "Stick";
       default:
           //for now the default case will be high-hat
-          return "../assets/Hi-Hat.wav";
+          return "Hat";
     }
   }
+
+  // predictImg(predict: String){
+  //   switch (predict) {
+  //     case "Open Hand":
+  //         return "../assets/drum_imgs/Floor-Tom.jpg";
+  //     case "Two Open Hands":
+  //        return "../assets/drum_imgs/Drum_Kick.jpg";
+  //     case "Closed Hand":
+  //         return "../assets/drum_imgs/High-Hat.jpg";
+  //     case "Two Closed Hands":
+  //        return "../assets/drum_imgs/High-Tom.jpg";
+  //     case "Hand Pointing":
+  //        return "../assets/drum_imgs/Mid-Tom.jpg";
+  //     case "Two Hands Pointing":
+  //         return "../assets/drum_imgs/Low-Tom.jpg";
+  //     case "Hand Pinching":
+  //         return "../assets/drum_imgs/Crash_Cymbal.jpg";
+  //     case "Two Hands Pinching":
+  //         return "../assets/drum_imgs/Ride_Cymbal.jpg";
+  //     case "Closed Hand & Open Hand":
+  //         return "../assets/drum_imgs/Clap.jpg";
+  //     case "Closed Hand & Hand Pointing":
+  //         return "../assets/drum_imgs/Sticks.jpg";
+  //     default:
+  //         return "../assets/drum_imgs/Hi-Hat.jpg";
+  //   }
+  // }
+  // predictSound(predict: String){
+  //   switch (predict) {
+  //     case "Open Hand":
+  //         return "../assets/Floor-Tom.wav";
+  //     case "Two Open Hands":
+  //        return "../assets/Bass-Drum.wav";
+  //     case "Closed Hand":
+  //         return "../assets/Hi-Hat.wav";
+  //     case "Two Closed Hands":
+  //        return "../assets/Hi-Tom.wav";
+  //     case "Hand Pointing":
+  //        return "../assets/Mid-Tom.wav";
+  //     case "Two Hands Pointing":
+  //         return "../assets/Low-Tom.wav";
+  //     case "Hand Pinching":
+  //         return "../assets/Crash-Cymbal.wav";
+  //     case "Two Hands Pinching":
+  //         return "../assets/Ride-Cymbal.wav";
+  //     case "Closed Hand & Open Hand":
+  //         return "../assets/Clap.wav";
+  //     case "Closed Hand & Hand Pointing":
+  //         return "../assets/Cross-Sticks.wav";
+  //     default:
+  //         //for now the default case will be high-hat
+  //         return "../assets/Hi-Hat.wav";
+  //   }
+  // }
 
   
 
 }
-
-

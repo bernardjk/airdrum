@@ -88,7 +88,7 @@ export class HandtrackerComponent implements OnInit {
             let pinching = 0;
             for(let p of predictions){
                 //uncomment to view label and position data
-                console.log(p.label + " at X: " + p.bbox[0] + ", Y: " + p.bbox[1] + " at X: " + p.bbox[2] + ", Y: " + p.bbox[3]);
+               // console.log(p.label + " at X: " + p.bbox[0] + ", Y: " + p.bbox[1] + " at X: " + p.bbox[2] + ", Y: " + p.bbox[3]);
                 
                 if(p.label == 'open') openhands++;
                 if(p.label == 'closed') closedhands++;
@@ -110,6 +110,9 @@ export class HandtrackerComponent implements OnInit {
             
             if (pinching > 1) this.detectedGesture = "Two Hands Pinching";
             else if(pinching == 1) this.detectedGesture = "Hand Pinching";
+
+            if(closedhands == 1 && openhands == 1) this.detectedGesture = "Closed Hand & Open Hand"; //added gesture
+            if(closedhands == 1 && pointing == 1) this.detectedGesture = "Closed Hand & Hand Pointing";//added gesture
 
             if (openhands == 0 && closedhands == 0 && pointing == 0 && pinching == 0)
                 this.detectedGesture = "None";
