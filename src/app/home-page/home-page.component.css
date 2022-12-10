@@ -53,6 +53,7 @@ app-handtracker {
     position: relative;
     left: 30%;
     top: 30%;
+    right: 5%;
     background-color: green;
     color: white;
     padding: 5%;
@@ -110,6 +111,6 @@ app-handtracker {
 p{
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
-    font-size: medium;
+    font-size: small;
 }
 
