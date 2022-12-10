@@ -10,7 +10,11 @@ app-handtracker {
 }
 
 #gesture {
+    padding-top: 5%;
     text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 200%;
 }
 
 .middle_grid{
@@ -52,6 +56,13 @@ app-handtracker {
     background-color: green;
     color: white;
     padding: 5%;
+    font-weight: bold;
+    font-size: medium;
+    font-family: 'Courier New', Courier, monospace;
+}
+#play_button:hover{
+    background-color: white;
+    color: green;
 }
 
 #record_button {
@@ -61,19 +72,44 @@ app-handtracker {
     background-color: green;
     color: white;
     padding: 1%;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+    transition-duration: .4s;
 }
+#record_button:hover{
+    background-color: white;
+    color: green;
+}
+
 
 #clear_button {
     position: relative;
     left: 5%;
     top: 5%;
-    background-color: red;
-    color: white;
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
     padding: 1%;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+}
+#clear_button:hover{
+    background-color: white;
+    color: red;
 }
 
 #welcome{
     font-family: 'Courier New', Courier, monospace;
-    font-size: 300%;
+    font-size: 400%;
     font-weight: bold;
+    text-align: center;
+
 }
+
+p{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: medium;
+}
+

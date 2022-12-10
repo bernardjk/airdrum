@@ -4,7 +4,7 @@
         <p id="welcome">Welcome to AirDrummer!</p>
     </div>
     <div class="middle-container">
-        <app-handtracker id="camera" (onPrediction)="prediction($event)"></app-handtracker>
+        <app-handtracker (onPrediction)="prediction($event)"></app-handtracker>
 
         <div id="gesture" [innerHTML]="gesture"></div>
     </div>
@@ -82,4 +82,16 @@
     <div class="play_button">
         <button id="play_button" (click)="playSounds()">Play All Sounds</button>
     </div>
+</div>
+
+<div class="instructions">
+    <p>How to play:</p>
+    <p>1. Click Start and allow this page to use your camera.</p>
+    <p>2. When you are ready click the "Record" button and make some gestures with your hands.<br>
+        (At the top-right of the screen you will find a
+        guide of the possible sounds and the corresponding hand gesture
+        in the bottom left of the image.)
+    </p>
+    <p>3. After all of the boxes have filled up go ahead and click the "Play All Sounds" button to hear your tune.</p>
+    <p>4. Click on the clear button and start a new beat.</p>
 </div>

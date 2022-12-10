@@ -161,7 +161,7 @@ export class HomePageComponent implements OnInit {
     let it = 0;
     //fill the array until it has 50 elements 
     while (array.length < 50){
-      array[it] = this.gesture; //****************************this is the problem****************************************** */
+      array[it] = this.gesture; 
       it++;
       //console.log(this.gesture);
 
