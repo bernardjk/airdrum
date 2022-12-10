@@ -1,4 +1,4 @@
---Readme document for Nicholas Correa and Beide Liu, nrcorrea@uci.edu and , 73648921 and --
+--Readme document for Nicholas Correa and Beide Liu, nrcorrea@uci.edu and zhaoyil7@uci.edu, 73648921 and 73251814--
 
 1. How many assignment points do you believe you completed (replace the \*'s with your numbers)?
 
