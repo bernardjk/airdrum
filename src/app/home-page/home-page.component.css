@@ -46,5 +46,34 @@ app-handtracker {
 }
 
 #play_button {
-    text-align: center;
+    position: relative;
+    left: 30%;
+    top: 30%;
+    background-color: green;
+    color: white;
+    padding: 5%;
+}
+
+#record_button {
+    position: relative;
+    left: 5%;
+    top: 5%;
+    background-color: green;
+    color: white;
+    padding: 1%;
+}
+
+#clear_button {
+    position: relative;
+    left: 5%;
+    top: 5%;
+    background-color: red;
+    color: white;
+    padding: 1%;
+}
+
+#welcome{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 300%;
+    font-weight: bold;
 }

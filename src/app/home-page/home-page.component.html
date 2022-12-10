@@ -1,25 +1,35 @@
 <div class="middle_grid">
 
     <div class="left-container">
-        <p>Hello! Welcome to AirDrummer!</p>
+        <p id="welcome">Welcome to AirDrummer!</p>
     </div>
     <div class="middle-container">
-        <app-handtracker (onPrediction)="prediction($event)"></app-handtracker>
+        <app-handtracker id="camera" (onPrediction)="prediction($event)"></app-handtracker>
 
         <div id="gesture" [innerHTML]="gesture"></div>
     </div>
 
     <div class="right-container">
-        <div class="grid-item"><button (click)="playClap()"><img class="drum_img" src="..\assets\drum_imgs\Clap.jpg" alt="Picture of hands clapping"></button></div>
-        <div class="grid-item"><button (click)="playCrash()"><img class="drum_img" src="..\assets\drum_imgs\Crash-Cymbal.jpg" alt="Picture of hands crash cymbal"></button></div>
-        <div class="grid-item"><button (click)="playBass()"><img class="drum_img" src="..\assets\drum_imgs\Drum-Kick.jpg" alt="Picture of Bass Drum"></button></div>
-        <div class="grid-item"><button (click)="playFloor()"><img class="drum_img" src="..\assets\drum_imgs\Floor-Tom.jpg" alt="Picture of Floor-Tom"></button> </div>
-        <div class="grid-item"><button (click)="playHat()"><img class="drum_img" src="..\assets\drum_imgs\High-Hat.jpg" alt="Picture of high-hat"></button></div>
-        <div class="grid-item"><button (click)="playHi()"><img class="drum_img" src="..\assets\drum_imgs\High-Tom.jpg" alt="Picture of high-tom"></button></div>
-        <div class="grid-item"><button (click)="playLow()"><img class="drum_img" src="..\assets\drum_imgs\Low-Tom.jpg" alt="Picture of low-tom"></button></div>
-        <div class="grid-item"><button (click)="playMid()"><img class="drum_img" src="..\assets\drum_imgs\Mid-Tom.jpg" alt="Picture of mid-tom"></button></div>
-        <div class="grid-item"><button (click)="playRide()"><img class="drum_img" src="..\assets\drum_imgs\Ride-Cymbal.jpg" alt="Picture of ride cymbal"></button></div>
-        <div class="grid-item"><button (click)="playStick()"><img class="drum_img" src="..\assets\drum_imgs\Sticks.jpg" alt="Picture of sticks"></button></div>
+        <div class="grid-item"><button (click)="playClap()"><img class="drum_img" src="..\assets\drum_imgs\Clap.jpg"
+                    alt="Picture of hands clapping"></button></div>
+        <div class="grid-item"><button (click)="playCrash()"><img class="drum_img"
+                    src="..\assets\drum_imgs\Crash-Cymbal.jpg" alt="Picture of hands crash cymbal"></button></div>
+        <div class="grid-item"><button (click)="playBass()"><img class="drum_img"
+                    src="..\assets\drum_imgs\Drum-Kick.jpg" alt="Picture of Bass Drum"></button></div>
+        <div class="grid-item"><button (click)="playFloor()"><img class="drum_img"
+                    src="..\assets\drum_imgs\Floor-Tom.jpg" alt="Picture of Floor-Tom"></button> </div>
+        <div class="grid-item"><button (click)="playHat()"><img class="drum_img" src="..\assets\drum_imgs\High-Hat.jpg"
+                    alt="Picture of high-hat"></button></div>
+        <div class="grid-item"><button (click)="playHi()"><img class="drum_img" src="..\assets\drum_imgs\High-Tom.jpg"
+                    alt="Picture of high-tom"></button></div>
+        <div class="grid-item"><button (click)="playLow()"><img class="drum_img" src="..\assets\drum_imgs\Low-Tom.jpg"
+                    alt="Picture of low-tom"></button></div>
+        <div class="grid-item"><button (click)="playMid()"><img class="drum_img" src="..\assets\drum_imgs\Mid-Tom.jpg"
+                    alt="Picture of mid-tom"></button></div>
+        <div class="grid-item"><button (click)="playRide()"><img class="drum_img"
+                    src="..\assets\drum_imgs\Ride-Cymbal.jpg" alt="Picture of ride cymbal"></button></div>
+        <div class="grid-item"><button (click)="playStick()"><img class="drum_img" src="..\assets\drum_imgs\Sticks.jpg"
+                    alt="Picture of sticks"></button></div>
     </div>
 </div>
 
@@ -28,7 +38,7 @@
     <div class="record_button">
         <button *ngIf="hasstarted == false" id="record_button" (click)="addSound()">Record</button>
         <button *ngIf="hasstarted == true" id="record_button" (click)="stop()">Stop</button>
-        <button id="record_button" (click)="clear()">Clear</button>
+        <button id="clear_button" (click)="clear()">Clear</button>
     </div>
 </div>
 
@@ -73,11 +83,3 @@
         <button id="play_button" (click)="playSounds()">Play All Sounds</button>
     </div>
 </div>
-
-
-
-
-
-
-
-
