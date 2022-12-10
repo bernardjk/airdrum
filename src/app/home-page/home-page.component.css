@@ -19,7 +19,7 @@ app-handtracker {
 
 .middle_grid{
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 20% 30% 50%;
 }
 .right-container{
     display: grid;
@@ -101,7 +101,7 @@ app-handtracker {
 
 #welcome{
     font-family: 'Courier New', Courier, monospace;
-    font-size: 400%;
+    font-size: 200%;
     font-weight: bold;
     text-align: center;
 
